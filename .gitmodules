@@ -1,0 +1,3 @@
+[submodule "hw2/LSM6DS3"]
+	path = hw2/LSM6DS3
+	url = https://github.com/wrh2/LSM6DS3.git
