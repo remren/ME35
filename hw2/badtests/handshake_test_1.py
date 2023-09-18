@@ -45,3 +45,6 @@ print(fred)
 # string_fred = fred.decode() # goes from bytes to a string
 # print(fred)
 # print(string_fred)
+
+# ASYNC
+# 
