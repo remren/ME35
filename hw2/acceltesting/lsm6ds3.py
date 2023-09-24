@@ -1,12 +1,12 @@
-#https://www.pololu.com/file/0J1087/LSM6DS33.pdf
-#https://github.com/jposada202020/MicroPython_LSM6DSOX/blob/master/micropython_lsm6dsox/lsm6dsox.py
+# https://www.pololu.com/file/0J1087/LSM6DS33.pdf
+# https://github.com/jposada202020/MicroPython_LSM6DSOX/blob/master/micropython_lsm6dsox/lsm6dsox.py
 # From Chris Roger's ME35 Page!
 
 from machine import Pin, I2C
 import struct, time
 
 LSM = 0x6A
-i2c = I2C(0, scl=Pin(5), sda=Pin(4), freq=100000)
+i2c = I2C(1, scl=Pin(3), sda=Pin(2), freq=100000)
 print(f"I2C Devices Scanned: {[hex(i) for i in i2c.scan()]}")
 
 class LSM6DS3:
@@ -49,11 +49,18 @@ class LSM6DS3:
         accel = struct.unpack('<hhh',accel)
         
     def readaccel(self):
+        print("entered read accel!")
         self.accel = i2c.readfrom_mem(LSM, 0x28, 6)
-        self.accel = struct.unpack('<hhh',accel)
-        return accel
+        self.accel = struct.unpack('<hhh',self.accel)
+        print(self.accel)
+        return self.accel
     
     def readgyro(self):
         self.gyro = i2c.readfrom_mem(LSM, 0x22, 6)
-        self.gyro = struct.unpack('<hhh',gyro)
-        return gyro
+        self.gyro = struct.unpack('<hhh',self.gyro)
+        print(self.gyro)
+        return self.gyro
+    
+test = LSM6DS3()
+test.init_lsm6ds3()
+test.readaccel()

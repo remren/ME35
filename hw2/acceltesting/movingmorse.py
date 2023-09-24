@@ -3,7 +3,7 @@ import time
 
 import lsm6ds3
 
-unit = lsm6ds3.LSM6DS3
+unit = lsm6ds3.LSM6DS3()
 unit.init_lsm6ds3()
 
 class MovingMorse:

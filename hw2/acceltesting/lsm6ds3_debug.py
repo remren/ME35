@@ -7,7 +7,7 @@ import struct, time
 
 LSM = 0x6A
 
-i2c = I2C(0, scl=Pin(5), sda=Pin(4), freq=100000)
+i2c = I2C(1, scl=Pin(3), sda=Pin(2), freq=100000)
 print(f"I2C Devices Scanned: {[hex(i) for i in i2c.scan()]}")
 
 ID = i2c.readfrom_mem(LSM, 0x0F, 1)
@@ -55,20 +55,21 @@ dot_time = 1000 # in ms
 dash_time = 2000 # in ms
 diff = 0
 led = Pin(0, Pin.OUT)
-i = 2
+led.low()
+i = 1
 dawg = read()
 prev = read()
 while True:
     dawg = read()
     delta = dawg[i] - prev[i]
     print(f"{i}: {delta}")
-    if delta < -1000:
+    if delta > 400:
         up_event = time.ticks_ms()
         print(f"up! {up_event}")
         diff = up_event - down_event
         print(f"delta time: {diff}")
         led.low()
-    if delta > 1000:
+    if delta < -400:
         print(f"down. {down_event}")
         down_event = time.ticks_ms()
         led.high()
