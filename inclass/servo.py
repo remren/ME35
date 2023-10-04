@@ -1,7 +1,7 @@
 import time
 from machine import Pin
 
-GP = 15
+GP =  16
 
 class servo():
     def __init__(self, gpio=GP, start = 1.5):

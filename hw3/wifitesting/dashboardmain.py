@@ -26,7 +26,8 @@ USERNAME = "remren"
 
 url = 'https://io.adafruit.com/api/v2/%s/feeds' % USERNAME
 # REMOVE THIS IN YOUR NOTION UPLOAD
-key = ""
+# key = None
+key = "aio_Lunx26bWjEt4LkpzcQYEcQh4rGa8"
 # REMOVE THIS IN YOUR NOTION UPLOAD
 headers = {'X-AIO-Key':key,'Content-Type':'application/json'}
 reply = requests.get(url,headers=headers)
@@ -63,19 +64,19 @@ def sendloop():
         x_axis		= joy.read_joystick(14)
         y_axis		= joy.read_joystick(15)
         buttons		= [not joy.digital_read() & btn for btn in BTN_CONST]
-        for i in range(1, 4):
+        for i in range(0, 3):
             print(f"imu_data[{i}]={imu_data[i - 1]}")
-            sendit(i, imu_data[i - 1])
-        for i in range(4, 8):
-            print(f"button[{i - 4}]={buttons[i - 4]}")
+            sendit(i, imu_data[i])
+        for i in range(3, 7):
+            print(f"button[{i - 3}]={buttons[i - 3]}")
             indicator = 0
-            if (buttons[i-4]):
+            if (buttons[i-3]):
                 indicator = 1
             sendit(i, indicator)
         print(f"x_axis={x_axis}")
-        sendit(8, x_axis)
+        sendit(7, x_axis)
         print(f"y_axis={y_axis}")
-        sendit(9, y_axis)
+        sendit(8, y_axis)
         print("all sent!")
 
 try:
