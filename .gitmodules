@@ -1,3 +1,6 @@
 [submodule "hw2/LSM6DS3"]
 	path = hw2/LSM6DS3
 	url = https://github.com/wrh2/LSM6DS3.git
+[submodule "hw6/me35hw6"]
+	path = hw6/me35hw6
+	url = git@github.com:remren/me35hw6.git
