@@ -27,7 +27,7 @@ USERNAME = "remren"
 url = 'https://io.adafruit.com/api/v2/%s/feeds' % USERNAME
 # REMOVE THIS IN YOUR NOTION UPLOAD
 # key = None
-key = "aio_Lunx26bWjEt4LkpzcQYEcQh4rGa8"
+key = ""
 # REMOVE THIS IN YOUR NOTION UPLOAD
 headers = {'X-AIO-Key':key,'Content-Type':'application/json'}
 reply = requests.get(url,headers=headers)

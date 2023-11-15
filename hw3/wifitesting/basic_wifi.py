@@ -31,7 +31,7 @@ print(station.ifconfig())
 USERNAME = "remren"
 
 url = 'https://io.adafruit.com/api/v2/%s/feeds' % USERNAME
-key = "aio_jPbF46dNj5cibjDEfTdrut6TkYBh"
+key = "" # deleted, is AIO KEY
 headers = {'X-AIO-Key':key,'Content-Type':'application/json'}
 reply = requests.get(url,headers=headers)
 if reply.status_code == 200:
