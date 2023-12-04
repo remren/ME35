@@ -1,0 +1,17 @@
+To find the PID of a rogue mosquitto task running on Port 1883 (will be last number):
+netstat -ano | findstr ":1883"
+
+The command below needs to be done in a Powershell (or cmd) with Admin perms.
+To kill a specific PID (replace the whole <PID>):
+taskkill /PID <PID> /F
+
+To start the broker:
+.\mosquitto -c mosquitto.conf.txt -v
+
+To test subscribing to the broker (replace the whole <IPADDRESS>):
+.\mosquitto_sub -t "arm" -h <IPADDRESS> -p 1883
+
+To test publishing to the broker (replace the whole <IPADDRESS>):
+.\mosquitto_pub -t "arm" -h <IPADDRESS> -p 1883 -m "message"
+
+Stepper Motor: Red/Yellow, Green/Gray pairs.
